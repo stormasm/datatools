@@ -16,20 +16,15 @@ func check(e error) {
 	}
 }
 
-func processColumns(v interface {}){
+func processColumns(vv interface {}){
 
+	fmt.Println("column type:", reflect.TypeOf(vv))
+    fmt.Println("value type:", reflect.ValueOf(vv))
 
-    switch vv := v.(type) {
+    m := reflect.ValueOf(vv)
 
-    case string:
-        fmt.Println("is string", vv)
-    case int:
-        fmt.Println("is int", vv)
-    case []interface{}:
-        processColumnAry(vv)
-    default:
-        fmt.Println(vv, "is of a type I don't know how to handle")
-    }
+    fmt.Println(m)
+
 }
 
 //func processInnerMap(vv map[string]interface {}) {
@@ -78,12 +73,9 @@ func processMap(vv map[string]interface {}) {
 
 func processColumnAry(vv []interface{}) {
     fmt.Println("\n\n\n")
-    fmt.Println("Inside process column array")
-	fmt.Println("type of Big Array = ", reflect.TypeOf(vv))
-	fmt.Println("length of Big Array = ", len(vv))
 	for k, u := range vv {
-		fmt.Println("type of Small Array = ", reflect.TypeOf(u))
-		fmt.Println(k, u)
+		fmt.Println("type of Column Array = ", reflect.TypeOf(u))
+        // processMap(u)
 
 		switch vv := u.(type) {
 		case string:
@@ -95,6 +87,7 @@ func processColumnAry(vv []interface{}) {
 		default:
 			fmt.Println(k, "is of a type I don't know how to handle")
 		}
+
 	}
 }
 
