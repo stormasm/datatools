@@ -48,9 +48,12 @@ func processJson(v interface{}) {
 		case int:
 			fmt.Println(k, "is int", vv)
 		case []interface{}:
-			processAry(vv)
+			//processAry(vv)
+        case map[string]interface {}:
+            fmt.Println(k, "is a map", vv)
 		default:
-			fmt.Println(k, "is of a type I don't know how to handle")
+			fmt.Print(k, " is of a type I don't know how to handle which is ")
+            fmt.Println(reflect.TypeOf(v))
 		}
 	}
 }
