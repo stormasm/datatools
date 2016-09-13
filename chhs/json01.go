@@ -75,7 +75,11 @@ func writeLines(lines []string, path string) (err error) {
 }
 
 func main() {
-    lines, err := readLines("chem01.json",2016)
+
+    // 5 lines
+    lines, err := readLines("chem01.json",1820)
+    // 200 lines
+    // lines, err := readLines("chem01.json",2016)
     if err != nil {
         fmt.Println("Error: %s\n", err)
         return
@@ -83,7 +87,6 @@ func main() {
     for _, line := range lines {
         fmt.Println(line)
     }
-    //array := []string{"7.0", "8.5", "9.1"}
-    err = writeLines(lines, "chem02.json")
+    err = writeLines(lines, "chem03.json")
     fmt.Println(err)
 }
