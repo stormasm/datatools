@@ -15,6 +15,31 @@ func check(e error) {
 	}
 }
 
+func processAry(vv []interface{}) {
+    fmt.Println("type of Big Array = ", reflect.TypeOf(vv))
+    fmt.Println("length of Big Array = ", len(vv))
+    for k, u := range vv {
+        fmt.Println("type of Small Array = ", reflect.TypeOf(u))
+        fmt.Println(k, u)
+
+
+        switch vv := u.(type) {
+        case string:
+            fmt.Println(k, "is string", vv)
+        case int:
+            fmt.Println(k, "is int", vv)
+        case []interface{}:
+            processAry(vv)
+        default:
+            fmt.Println(k, "is of a type I don't know how to handle")
+        }
+
+
+
+
+    }
+}
+
 func processJson(v interface{}) {
 
     fmt.Println("type:", reflect.TypeOf(v))
@@ -28,10 +53,7 @@ func processJson(v interface{}) {
         case int:
             fmt.Println(k, "is int", vv)
         case []interface{}:
-            fmt.Println(k, "is an array:")
-            for i, u := range vv {
-                fmt.Println(i, u)
-            }
+            processAry(vv)
         default:
             fmt.Println(k, "is of a type I don't know how to handle")
         }
