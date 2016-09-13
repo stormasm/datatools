@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"reflect"
+    "strings"
 )
 
 func check(e error) {
@@ -15,13 +16,66 @@ func check(e error) {
 	}
 }
 
-func processMap(vv map[string]interface {}) {
-	fmt.Println("type = ", reflect.TypeOf(vv))
-    // fmt.Println(vv)
+func processColumns(v interface {}){
+
+/*
+    switch vv := v.(type) {
+    case string:
+        fmt.Println(k, "is string", vv)
+    case int:
+        //fmt.Println(k, "is int", vv)
+    case []interface{}:
+        //processAry(vv)
+    //case map[string]interface {}:
+    //    processMap(vv)
+    default:
+        //fmt.Print(k, " is of a type I don't know how to handle which is ")
+        //fmt.Println(reflect.TypeOf(v))
+    }
+*/
+
+}
+
+//func processInnerMap(vv map[string]interface {}) {
+func processInnerMap(v interface {}) {
+	fmt.Println("map 222 type = ", reflect.TypeOf(v))
+    // fmt.Println(v)
+
+    m := v.(map[string]interface{})
+
+    // fmt.Println(m)
+
+
+	for k, v := range m {
+        fmt.Println("Inner key = ", k)
+        value := strings.Compare(k,"columns")
+        if value == 0 {
+            fmt.Println("Got a hit on columns")
+            fmt.Println("column type = ", reflect.TypeOf(v))
+        }
+	}
+
+
+
+/*
 	for k, u := range vv {
-        fmt.Println(k)
+        fmt.Println("inner key = ",k)
+        fmt.Println("type of inner 2 map = ", reflect.TypeOf(u))
         fmt.Println("\n\n\n")
         fmt.Println(u)
+    }
+*/
+}
+
+
+func processMap(vv map[string]interface {}) {
+	fmt.Println("map type = ", reflect.TypeOf(vv))
+    // fmt.Println(vv)
+	for k, u := range vv {
+        fmt.Println("key = ",k)
+        fmt.Println("type of inner map = ", reflect.TypeOf(u))
+        //fmt.Println("\n\n\n")
+        processInnerMap(u)
     }
 }
 
