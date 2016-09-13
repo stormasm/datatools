@@ -15,6 +15,16 @@ func check(e error) {
 	}
 }
 
+func processMap(vv map[string]interface {}) {
+	fmt.Println("type = ", reflect.TypeOf(vv))
+    // fmt.Println(vv)
+	for k, u := range vv {
+        fmt.Println(k)
+        fmt.Println("\n\n\n")
+        fmt.Println(u)
+    }
+}
+
 func processAry(vv []interface{}) {
 	fmt.Println("type of Big Array = ", reflect.TypeOf(vv))
 	fmt.Println("length of Big Array = ", len(vv))
@@ -50,7 +60,7 @@ func processJson(v interface{}) {
 		case []interface{}:
 			//processAry(vv)
         case map[string]interface {}:
-            fmt.Println(k, "is a map", vv)
+            processMap(vv)
 		default:
 			fmt.Print(k, " is of a type I don't know how to handle which is ")
             fmt.Println(reflect.TypeOf(v))
