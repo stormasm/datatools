@@ -23,7 +23,12 @@ func readColumns(row []string) {
 */
 
 func buildJson(column []string, row []string) {
-    fmt.Println(row)
+	for _, colname := range column {
+		fmt.Println(colname)
+	}
+	for i, record := range row {
+		fmt.Println(i,record)
+	}
 }
 
 func main() {
@@ -52,8 +57,11 @@ func main() {
 	for i, row := range rawCSVdata {
 		fmt.Println(i,row)
         fmt.Println("\n")
+		processData(i,row)
+/*
         for j, record := range row {
 			fmt.Println(j,record)
 		}
+*/
 	}
 }
