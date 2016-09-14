@@ -27,7 +27,11 @@ func processColumns(vv interface {}){
     fmt.Println("column kind", v.Kind())
 
     for i := 0; i < v.Len(); i++ {
-         fmt.Println(v.Index(i))
+        mymap := v.Index(i)
+        fmt.Println(mymap)
+        fmt.Println("\n\n")
+
+
      }
 
 
