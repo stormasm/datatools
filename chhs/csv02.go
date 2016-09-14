@@ -39,7 +39,7 @@ func main() {
 
 	reader := csv.NewReader(csvfile)
 
-	reader.FieldsPerRecord = -1 // see the Reader struct information below
+	//reader.FieldsPerRecord = -1 // see the Reader struct information below
 
 	rawCSVdata, err := reader.ReadAll()
 
@@ -50,8 +50,10 @@ func main() {
 
 	// sanity check, display to standard output
 	for i, row := range rawCSVdata {
-		//fmt.Println(i,row)
-        //fmt.Println("\n")
-        processData(i,row)
+		fmt.Println(i,row)
+        fmt.Println("\n")
+        for j, record := range row {
+			fmt.Println(j,record)
+		}
 	}
 }
