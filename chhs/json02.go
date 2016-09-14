@@ -25,6 +25,12 @@ func processColumns(vv interface {}){
 
     //fmt.Println("type:", v.Type())
     fmt.Println("column kind", v.Kind())
+
+    for i := 0; i < v.Len(); i++ {
+         fmt.Println(v.Index(i))
+     }
+
+
 //    fmt.Println("kind is float64:", v.Kind() == reflect.Float64)
 //    fmt.Println("value:", v.Float())
 
