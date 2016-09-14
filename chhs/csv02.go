@@ -6,25 +6,21 @@ import (
 	"os"
 )
 
+var columnames []string
+
 func processData(i int,row []string) {
-    var column []string
     if i == 0 {
-        column = row
+		columnames = make([]string, len(row))
+		copy(columnames, row)
     } else {
         fmt.Println("Data")
-        buildJson(column,row)
+        buildJson(columnames,row)
     }
 }
 
-/*
-func readColumns(row []string) {
-    fmt.Println(row)
-}
-*/
-
 func buildJson(column []string, row []string) {
-	for _, colname := range column {
-		fmt.Println(colname)
+	for i, colname := range column {
+		fmt.Println(i,colname)
 	}
 	for i, record := range row {
 		fmt.Println(i,record)
@@ -39,13 +35,9 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-
 	defer csvfile.Close()
 
 	reader := csv.NewReader(csvfile)
-
-	//reader.FieldsPerRecord = -1 // see the Reader struct information below
-
 	rawCSVdata, err := reader.ReadAll()
 
 	if err != nil {
@@ -53,15 +45,10 @@ func main() {
 		os.Exit(1)
 	}
 
-	// sanity check, display to standard output
 	for i, row := range rawCSVdata {
+		fmt.Println()
 		fmt.Println(i,row)
-        fmt.Println("\n")
+		fmt.Println()
 		processData(i,row)
-/*
-        for j, record := range row {
-			fmt.Println(j,record)
-		}
-*/
 	}
 }
