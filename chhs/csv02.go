@@ -7,19 +7,22 @@ import (
 )
 
 func processData(i int,row []string) {
+    var column []string
     if i == 0 {
-        readColumns(row)
+        column = row
     } else {
         fmt.Println("Data")
-        readData(row)
+        buildJson(column,row)
     }
 }
 
+/*
 func readColumns(row []string) {
     fmt.Println(row)
 }
+*/
 
-func readData(row []string) {
+func buildJson(column []string, row []string) {
     fmt.Println(row)
 }
 
