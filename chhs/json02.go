@@ -19,11 +19,19 @@ func check(e error) {
 func processColumns(vv interface {}){
 
 	fmt.Println("column type:", reflect.TypeOf(vv))
-    fmt.Println("value type:", reflect.ValueOf(vv))
+    //fmt.Println("value type:", reflect.ValueOf(vv))
 
-    m := reflect.ValueOf(vv)
+    v := reflect.ValueOf(vv)
 
-    fmt.Println(m)
+    //fmt.Println("type:", v.Type())
+    fmt.Println("column kind", v.Kind())
+//    fmt.Println("kind is float64:", v.Kind() == reflect.Float64)
+//    fmt.Println("value:", v.Float())
+
+
+
+
+    //fmt.Println(m)
 
 }
 
