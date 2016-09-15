@@ -31,4 +31,17 @@ func main() {
 	d2["Name"] = "Iris"
 	b2, _ := json.Marshal(d2)
 	fmt.Println(string(b2))
+
+    // create a slice of doc2
+
+    d3 := make(Doc2)
+    d3["Color"] = "Purple"
+	d3["Name"] = "Hb"
+
+
+    docs := make([]Doc2, 0)
+    docs = append(docs,d2)
+    docs = append(docs,d3)
+    b3, _ := json.Marshal(docs)
+    fmt.Println(string(b3))
 }
