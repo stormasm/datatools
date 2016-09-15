@@ -1,14 +1,8 @@
 package main
 
 import (
-	// "bufio"
-	// "bytes"
 	"encoding/json"
 	"fmt"
-	//"os"
-	//"io/ioutil"
-	//"reflect"
-	//"strings"
 )
 
 func check(e error) {
@@ -18,17 +12,15 @@ func check(e error) {
 }
 
 type Document struct {
-	key   string
-	//value interface{}
-    value string
+	Key   string
+	Value interface{}
 }
 
 func main() {
 
-	d := Document{"Name", "Michael"}
+	d := Document{Key: "Name", Value: "Michael"}
 
 	b, err := json.Marshal(d)
 	check(err)
-	//os.Stdout.Write(b)
 	fmt.Println(string(b))
 }
