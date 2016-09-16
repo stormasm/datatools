@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"math/rand"
 )
 
@@ -45,4 +46,5 @@ func main() {
 	}
 	b, _ := json.Marshal(docs)
     fmt.Println(string(b))
+	ioutil.WriteFile("ex03.json",b,0644)
 }
