@@ -32,8 +32,33 @@ func main() {
 	d3 := make(Doc2)
     d3["data"] = docs1
 
-    b3, _ := json.Marshal(d3)
-    fmt.Println(string(b3))
-	ioutil.WriteFile("ex05.json",b3,0644)
+	////////////////////////
+
+	d4 := make(Doc2)
+    d4["Color"] = "Blue"
+	d4["Name"] = "Iris"
+
+    d5 := make(Doc2)
+    d5["Color"] = "Purple"
+	d5["Name"] = "Hb"
+
+	docs := make([]Doc2,0)
+	docs = append(docs,d4)
+	docs = append(docs,d5)
+
+	d6 := make(Doc2)
+	d6["misc"] = docs
+
+	////////////////////////
+
+	s := make([]interface{}, 2)
+	s[0] = d3
+	s[1] = d6
+
+	fmt.Println(s)
+
+	b5, _ := json.Marshal(s)
+	fmt.Println(string(b5))
+	ioutil.WriteFile("ex05.json",b5,0644)
 
 }
