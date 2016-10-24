@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"fmt"
+	"time"
 )
 
 func check(e error) {
@@ -35,19 +36,17 @@ func main() {
 	////////////////////////
 
 	d4 := make(Doc2)
-    d4["Color"] = "Blue"
-	d4["Name"] = "Iris"
+    d4["Repo"] = "garyburd/redigo"
 
     d5 := make(Doc2)
-    d5["Color"] = "Purple"
-	d5["Name"] = "Hb"
+    d5["Time"] = time.Now().String()
 
 	docs := make([]Doc2,0)
 	docs = append(docs,d4)
 	docs = append(docs,d5)
 
 	d6 := make(Doc2)
-	d6["misc"] = docs
+	d6["meta"] = docs
 
 	////////////////////////
 
