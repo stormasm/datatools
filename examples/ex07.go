@@ -75,6 +75,58 @@ func readJson(v interface{}) {
 	}
 }
 
+func processMap(vv map[string]interface {}) {
+	fmt.Println("map type = ", reflect.TypeOf(vv))
+    // fmt.Println(vv)
+	for k, u := range vv {
+        fmt.Println("key = ",k)
+        fmt.Println("type of inner map = ", reflect.TypeOf(u))
+        //fmt.Println("\n\n\n")
+        processInnerMap(u)
+    }
+}
+
+func processInnerMap(v interface {}) {
+	fmt.Println("map 222 type = ", reflect.TypeOf(v))
+/*
+    m := v.(map[string]interface{})
+
+	for k, v := range m {
+        fmt.Println("Inner key = ", k, v)
+	}
+*/
+}
+
+func processColumns(vv interface {}){
+
+	fmt.Println("column type:", reflect.TypeOf(vv))
+    //fmt.Println("value type:", reflect.ValueOf(vv))
+
+    v := reflect.ValueOf(vv)
+
+    //fmt.Println("type:", v.Type())
+    fmt.Println("column kind", v.Kind())
+
+    for i := 0; i < v.Len(); i++ {
+        mymap := v.Index(i)
+        fmt.Println(mymap)
+        fmt.Println("\n\n")
+
+
+     }
+
+
+//    fmt.Println("kind is float64:", v.Kind() == reflect.Float64)
+//    fmt.Println("value:", v.Float())
+
+
+
+
+    //fmt.Println(m)
+
+}
+
+
 func BuildJson(repos []Doc1) ([]uint8){
 
 	d3 := make(Doc2)
