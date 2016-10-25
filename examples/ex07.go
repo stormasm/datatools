@@ -75,13 +75,41 @@ func readJson(v interface{}) {
 	}
 }
 
+func processDataMap(t interface{}) {
+/*
+	gg := reflect.TypeOf(t).Kind()
+
+	switch v := gg.(type) {
+						case struct:
+                               fmt.Println(v)
+                       case int32, int64:
+                               fmt.Println(v)
+                       case SomeCustomType:
+                               fmt.Println(v)
+                       default:
+                               fmt.Println("unknown")
+               }
+
+*/
+
+	fmt.Println(reflect.TypeOf(t).Kind())
+
+	mydoc1 := reflect.TypeOf(t).Kind()
+
+	//mydoc1 := reflect.ValueOf(t)
+	fmt.Println(mydoc1)
+
+}
+
+
 func processDataKey(t interface{}) {
     switch reflect.TypeOf(t).Kind() {
     case reflect.Slice:
         s := reflect.ValueOf(t)
 
         for i := 0; i < s.Len(); i++ {
-            fmt.Println(s.Index(i))
+            mymap := s.Index(i)
+			processDataMap(mymap)
         }
     }
 }
@@ -92,25 +120,11 @@ func processMetaKey(t interface{}) {
         s := reflect.ValueOf(t)
 
         for i := 0; i < s.Len(); i++ {
-            fmt.Println(s.Index(i))
+			mymap := s.Index(i)
+            fmt.Println(mymap)
         }
     }
 }
-/*
-func processDataKey(vv interface{}){
-	fmt.Println("map type = ", reflect.TypeOf(vv))
-	//for key,value := range vv {
-	//	fmt.Println(value)
-	//}
-}
-
-func processMetaKey(vv interface{}) {
-	fmt.Println("map type = ", reflect.TypeOf(vv))
-	//for key,value := range vv {
-	//	fmt.Println(value)
-	//}
-}
-*/
 
 func processMap(vv map[string]interface {}) {
 	//fmt.Println("map type = ", reflect.TypeOf(vv))
