@@ -49,13 +49,13 @@ func main() {
 
 func readJson(v interface{}) {
 
-	fmt.Println("type:", reflect.TypeOf(v))
+	//fmt.Println("type:", reflect.TypeOf(v))
 
 	m := v.([]interface{})
 
 	for k, v := range m {
 
-		fmt.Println(k,v)
+		//fmt.Println(k)
 
 		switch vv := v.(type) {
 		case string:
@@ -66,8 +66,8 @@ func readJson(v interface{}) {
 			fmt.Println("process interface ary")
 			//processAry(vv)
         case map[string]interface {}:
-			fmt.Println("process map string interface ary")
-            //processMap(vv)
+			//fmt.Println("process map string interface ary")
+            processMap(vv)
 		default:
 			fmt.Print(k, " is of a type I don't know how to handle which is ")
             fmt.Println(reflect.TypeOf(v))
@@ -75,14 +75,29 @@ func readJson(v interface{}) {
 	}
 }
 
+func processDataKey(vv interface{}){
+	fmt.Println("map type = ", reflect.TypeOf(vv))
+}
+
+func processMetaKey(vv interface{}) {
+	fmt.Println("map type = ", reflect.TypeOf(vv))
+}
+
 func processMap(vv map[string]interface {}) {
 	fmt.Println("map type = ", reflect.TypeOf(vv))
     // fmt.Println(vv)
-	for k, u := range vv {
-        fmt.Println("key = ",k)
-        fmt.Println("type of inner map = ", reflect.TypeOf(u))
+	for key, value := range vv {
+        fmt.Println("key = ",key)
+		fmt.Println("value = ",value)
+		switch key {
+		case "data":
+			processDataKey(value)
+		case "meta":
+			processMetaKey(value)
+		}
+        //fmt.Println("type of inner map = ", reflect.TypeOf(u))
         //fmt.Println("\n\n\n")
-        processInnerMap(u)
+        //processInnerMap(u)
     }
 }
 
