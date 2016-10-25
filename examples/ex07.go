@@ -75,20 +75,49 @@ func readJson(v interface{}) {
 	}
 }
 
+func processDataKey(t interface{}) {
+    switch reflect.TypeOf(t).Kind() {
+    case reflect.Slice:
+        s := reflect.ValueOf(t)
+
+        for i := 0; i < s.Len(); i++ {
+            fmt.Println(s.Index(i))
+        }
+    }
+}
+
+func processMetaKey(t interface{}) {
+    switch reflect.TypeOf(t).Kind() {
+    case reflect.Slice:
+        s := reflect.ValueOf(t)
+
+        for i := 0; i < s.Len(); i++ {
+            fmt.Println(s.Index(i))
+        }
+    }
+}
+/*
 func processDataKey(vv interface{}){
 	fmt.Println("map type = ", reflect.TypeOf(vv))
+	//for key,value := range vv {
+	//	fmt.Println(value)
+	//}
 }
 
 func processMetaKey(vv interface{}) {
 	fmt.Println("map type = ", reflect.TypeOf(vv))
+	//for key,value := range vv {
+	//	fmt.Println(value)
+	//}
 }
+*/
 
 func processMap(vv map[string]interface {}) {
-	fmt.Println("map type = ", reflect.TypeOf(vv))
+	//fmt.Println("map type = ", reflect.TypeOf(vv))
     // fmt.Println(vv)
 	for key, value := range vv {
-        fmt.Println("key = ",key)
-		fmt.Println("value = ",value)
+        //fmt.Println("key = ",key)
+		//fmt.Println("value = ",value)
 		switch key {
 		case "data":
 			processDataKey(value)
