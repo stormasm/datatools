@@ -2,8 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	//"io/ioutil"
 	"fmt"
+	"reflect"
 	"time"
 )
 
@@ -58,10 +59,13 @@ func BuildJson(repos []Doc1) {
 	s[0] = d3
 	s[1] = d6
 
-	fmt.Println(s)
+	//fmt.Println(s)
 
 	b5, _ := json.Marshal(s)
-	fmt.Println(string(b5))
-	ioutil.WriteFile("ex07.json",b5,0644)
+
+	fmt.Println(reflect.TypeOf(b5))
+
+	//fmt.Println(string(b5))
+	//ioutil.WriteFile("ex07.json",b5,0644)
 
 }
