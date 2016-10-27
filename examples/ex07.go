@@ -76,29 +76,9 @@ func readJson(v interface{}) {
 }
 
 func processDataMap(t interface{}) {
-/*
-	gg := reflect.TypeOf(t).Kind()
-
-	switch v := gg.(type) {
-						case struct:
-                               fmt.Println(v)
-                       case int32, int64:
-                               fmt.Println(v)
-                       case SomeCustomType:
-                               fmt.Println(v)
-                       default:
-                               fmt.Println("unknown")
-               }
-
-*/
-
-	fmt.Println(reflect.TypeOf(t).Kind())
-
+	fmt.Println(t)
 	mydoc1 := reflect.TypeOf(t).Kind()
-
-	//mydoc1 := reflect.ValueOf(t)
 	fmt.Println(mydoc1)
-
 }
 
 
