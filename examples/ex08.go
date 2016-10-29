@@ -77,10 +77,13 @@ func readJson(v interface{}) {
 }
 
 func processDataMap(t interface{}) {
-	mytype := reflect.TypeOf(t).Kind()
+	fmt.Println(t)
+	//mytype := reflect.TypeOf(t).Kind()
 	value := reflect.ValueOf(t)
-	fmt.Println(mytype, value)
+	//fmt.Println(mytype, value)
+	fmt.Printf("%+v\n", value)
 
+	fmt.Println(reflect.Indirect(value))
 /*
         for i := 0; i < s.Len(); i++ {
             mymap := s.Index(i)
