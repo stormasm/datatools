@@ -7,7 +7,10 @@
 
 [Catalog List](https://www.healthdata.gov/search/field_tags/catalog-5446)
 
-Download These Files
+###How to Download These Files
+
+For the CSV files simply click on the download link.
+For the JSON files hit the CTRL button and then click.
 
 [Independent Medical Review Determinations](https://www.healthdata.gov/dataset/independent-medical-review-imr-determinations-trend)
 
